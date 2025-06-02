@@ -1,0 +1,89 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #0d0d0d;
+  color: white;
+  text-align: center;
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  animation: zoomEffect 3s ease-in-out;
+}
+
+@keyframes zoomEffect {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.match-info {
+  position: absolute;
+  top: 20%;
+  width: 100%;
+  text-shadow: 2px 2px 4px #000;
+}
+
+.ticket-section {
+  padding: 2rem;
+  background: #1a1a1a;
+}
+
+.category {
+  margin: 1rem 0;
+}
+
+.category button {
+  background: #ff9900;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+  transition: background 0.3s ease;
+}
+
+.category button:hover {
+  background: #cc7a00;
+}
+
+.hidden {
+  display: none;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.note {
+  margin-top: 2rem;
+}
+
+.whatsapp-btn {
+  display: inline-block;
+  background-color: #25D366;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: background 0.3s ease;
+}
+
+.whatsapp-btn:hover {
+  background-color: #1ebe57;
+}

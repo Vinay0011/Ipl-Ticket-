@@ -3,91 +3,135 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IPL Tickets Booking</title>
+  <title>IPL Final Tickets 🎟️</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px;
-      animation: fadeIn 1s ease-in;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    h1 {
-      font-size: 2em;
-      margin-bottom: 10px;
-      text-align: center;
-    }
-    p {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    input, button {
-      padding: 10px;
-      margin: 10px 0;
-      width: 100%;
-      max-width: 300px;
-      border-radius: 8px;
-      border: none;
-      font-size: 1em;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    input:focus, button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-    }
-    button {
-      background-color: #00ffcc;
-      color: black;
-      cursor: pointer;
-    }
-    h4 {
-      margin-top: 15px;
-      font-weight: normal;
-      font-style: italic;
-      color: #ccc;
-    }
-    @media only screen and (min-width: 768px) {
+    @media (min-width: 768px) {
       body {
         display: none;
       }
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: white;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: #00ffff;
+      text-shadow: 2px 2px #000;
+    }
+
+    p {
+      margin-bottom: 20px;
+      color: #ccc;
+    }
+
+    .container {
+      background-color: #1f1b3a;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+      width: 90%;
+      max-width: 400px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    label {
+      display: block;
+      text-align: left;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    button {
+      background: #00ffd5;
+      border: none;
+      padding: 12px;
+      width: 100%;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #00bfa6;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .note {
+      margin-top: 10px;
+      color: #00ffff;
+      font-size: 0.9rem;
+    }
+
+    .match-time {
+      margin-top: 5px;
+      font-size: 0.95rem;
+      color: #ffcc00;
     }
   </style>
 </head>
 <body>
   <h1>Book Your IPL Tickets 🎟️</h1>
-  <p>Final Match: <strong>RCB vs PBKS</strong><br> Date: <strong>3rd June</strong> | Time: <strong>7:30 PM</strong></p>
+  <p>Get ready to witness the thrill of IPL live in the stadium!</p>
+  <div class="match-time"><strong>RCB vs PBKS - Final Match</strong><br>📅 3rd June | 🕢 7:30 PM</div>
+  <div class="container">
+    <form id="ticketForm">
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" placeholder="Your name" required>
 
-  <form id="ticketForm">
-    <input type="text" id="name" placeholder="Full Name" required />
-    <input type="number" id="tickets" placeholder="Number of Tickets" required />
-    <input type="email" id="email" placeholder="Your Email" required />
-    <button type="submit">Book Now</button>
-  </form>
+      <label for="tickets">Number of Tickets:</label>
+      <input type="number" id="tickets" placeholder="e.g. 2" required>
 
-  <h4>You will get your ticket before the match start</h4>
+      <label for="email">Your Email:</label>
+      <input type="email" id="email" placeholder="you@example.com" required>
+
+      <button type="submit">Book Now</button>
+    </form>
+    <h4 class="note">You will get your ticket before the match start</h4>
+  </div>
 
   <script>
     document.getElementById("ticketForm").addEventListener("submit", function (e) {
       e.preventDefault();
-      var name = document.getElementById("name").value;
-      var email = document.getElementById("email").value;
-      var tickets = document.getElementById("tickets").value;
-      var msg = `Hi, I want to book ${tickets} IPL Final ticket(s).\nName: ${name}\nEmail: ${email}`;
-      var phoneNumber = "9285539561";
-      var url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(msg)}`;
-      window.location.href = url;
+      const name = document.getElementById("name").value;
+      const tickets = document.getElementById("tickets").value;
+      const email = document.getElementById("email").value;
+      const message = `Hello! I want to book IPL Final tickets.\n\nName: ${name}\nTickets: ${tickets}\nEmail: ${email}\nMatch: RCB vs PBKS (Final Match - 3rd June)`;
+      const encodedMessage = encodeURIComponent(message);
+      window.location.href = `https://wa.me/919285539561?text=${encodedMessage}`;
     });
   </script>
 </body>

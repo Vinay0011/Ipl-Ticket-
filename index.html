@@ -9,174 +9,84 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
-
     body {
-      background: linear-gradient(135deg, #1e1e2f, #1f3b60);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
       color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       padding: 20px;
-      overflow-x: hidden;
+      animation: fadeIn 1s ease-in;
     }
-
-    .not-supported {
-      display: none;
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 10px;
       text-align: center;
-      margin-top: 100px;
-      font-size: 1.5rem;
-      color: #ff6666;
     }
-
-    .main-content {
-      display: block;
-    }
-
-    header {
+    p {
       text-align: center;
-      padding: 40px 20px;
-      animation: fadeIn 1s ease-in-out;
+      margin-bottom: 20px;
     }
-
-    header h1 {
-      font-size: 2.5rem;
-      color: #00d9ff;
-      text-shadow: 2px 2px #000;
+    input, button {
+      padding: 10px;
+      margin: 10px 0;
+      width: 100%;
+      max-width: 300px;
+      border-radius: 8px;
+      border: none;
+      font-size: 1em;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-
-    header p {
-      font-size: 1.1rem;
-      margin-top: 10px;
+    input:focus, button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+    button {
+      background-color: #00ffcc;
+      color: black;
+      cursor: pointer;
+    }
+    h4 {
+      margin-top: 15px;
+      font-weight: normal;
+      font-style: italic;
       color: #ccc;
     }
-
-    .ticket-form {
-      max-width: 500px;
-      margin: 40px auto;
-      background: #2e2e4e;
-      padding: 25px;
-      border-radius: 15px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.5);
-      animation: slideUp 1.2s ease-in-out;
-    }
-
-    .ticket-form h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #00ffb3;
-    }
-
-    .ticket-form label {
-      display: block;
-      margin: 10px 0 5px;
-    }
-
-    .ticket-form input,
-    .ticket-form select {
-      width: 100%;
-      padding: 10px;
-      border: none;
-      border-radius: 8px;
-      margin-bottom: 20px;
-      transition: 0.3s;
-    }
-
-    .ticket-form input:focus,
-    .ticket-form select:focus {
-      outline: none;
-      box-shadow: 0 0 10px #00ffc8;
-    }
-
-    .ticket-form button {
-      width: 100%;
-      padding: 12px;
-      background: #00ffc8;
-      color: #000;
-      font-weight: bold;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    .ticket-form button:hover {
-      background: #00d9ff;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(-30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes slideUp {
-      from {
-        opacity: 0;
-        transform: translateY(50px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @media screen and (min-width: 800px) {
-      .main-content {
+    @media only screen and (min-width: 768px) {
+      body {
         display: none;
-      }
-      .not-supported {
-        display: block;
       }
     }
   </style>
 </head>
 <body>
-  <div class="not-supported">
-    ❌ This site is only accessible on mobile devices like Android or iPhone.
-  </div>
-  <div class="main-content">
-    <header>
-      <h1>Book Your IPL Tickets 🎟️</h1>
-      <p>Get ready to witness the thrill of IPL live in the stadium!</p>
-    </header>
+  <h1>Book Your IPL Tickets 🎟️</h1>
+  <p>Final Match: <strong>RCB vs PBKS</strong><br> Date: <strong>3rd June</strong> | Time: <strong>7:30 PM</strong></p>
 
-    <section class="ticket-form">
-      <h2>Ticket Booking Form</h2>
-      <form id="bookingForm">
-        <label for="name">Full Name:</label>
-        <input type="text" id="name" placeholder="Your name" required />
+  <form id="ticketForm">
+    <input type="text" id="name" placeholder="Full Name" required />
+    <input type="number" id="tickets" placeholder="Number of Tickets" required />
+    <input type="email" id="email" placeholder="Your Email" required />
+    <button type="submit">Book Now</button>
+  </form>
 
-        <label for="match">Select Match:</label>
-        <select id="match">
-          <option>RCB vs Who? (Final Match - Awaiting Result of PBKS vs MI)</option>
-        </select>
-
-        <label for="tickets">Number of Tickets:</label>
-        <input type="number" id="tickets" placeholder="e.g. 2" required />
-
-        <label for="email">Your Email:</label>
-        <input type="email" id="email" placeholder="you@example.com" required />
-
-        <button type="submit">Book Now</button>
-      </form>
-    </section>
-  </div>
+  <h4>You will get your ticket before the match start</h4>
 
   <script>
-    document.getElementById("bookingForm").addEventListener("submit", function(e) {
+    document.getElementById("ticketForm").addEventListener("submit", function (e) {
       e.preventDefault();
-      const name = document.getElementById("name").value;
-      const match = document.getElementById("match").value;
-      const tickets = document.getElementById("tickets").value;
-      const email = document.getElementById("email").value;
-
-      const message = encodeURIComponent(`Hello! I want to book IPL tickets.%0A\nName: ${name}%0A\nMatch: ${match}%0A\nTickets: ${tickets}%0A\nEmail: ${email}`);
-      const url = `https://wa.me/919285539561?text=${message}`;
-
+      var name = document.getElementById("name").value;
+      var email = document.getElementById("email").value;
+      var tickets = document.getElementById("tickets").value;
+      var msg = `Hi, I want to book ${tickets} IPL Final ticket(s).\nName: ${name}\nEmail: ${email}`;
+      var phoneNumber = "9285539561";
+      var url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(msg)}`;
       window.location.href = url;
     });
   </script>

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>IPL Status</title>
   <style>
     * {
@@ -15,14 +15,14 @@
       height: 100vh;
       background-color: black;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
       font-family: 'Arial', sans-serif;
     }
 
-    h1 {
-      font-size: 2rem;
+    h1, h2 {
       background: linear-gradient(270deg, #ff0080, #ff8c00, #40e0d0, #ff0080);
       background-size: 600% 600%;
       -webkit-background-clip: text;
@@ -30,36 +30,56 @@
       animation: glow 10s ease infinite, text-glow 2s ease-in-out infinite alternate;
     }
 
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
     @keyframes glow {
-      0% {
-        background-position: 0% 50%;
-      }
-      50% {
-        background-position: 100% 50%;
-      }
-      100% {
-        background-position: 0% 50%;
-      }
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     @keyframes text-glow {
-      from {
-        text-shadow: 0 0 5px #fff, 0 0 10px #f0f, 0 0 15px #0ff;
-      }
-      to {
-        text-shadow: 0 0 20px #0ff, 0 0 30px #f0f, 0 0 40px #ff0;
-      }
+      from { text-shadow: 0 0 5px #fff, 0 0 10px #f0f, 0 0 15px #0ff; }
+      to   { text-shadow: 0 0 20px #0ff, 0 0 30px #f0f, 0 0 40px #ff0; }
     }
 
     @media (max-width: 600px) {
-      h1 {
-        font-size: 1.5rem;
-        padding: 0 10px;
-      }
+      h1 { font-size: 1.5rem; padding: 0 10px; }
+      h2 { font-size: 1.2rem; }
     }
   </style>
 </head>
 <body>
   <h1>IPL 2025 is now over. This website will be live again for IPL 2026.</h1>
+  <h2 id="countdown">Countdown to IPL 2026...</h2>
+
+  <script>
+    const countdown = document.getElementById("countdown");
+    const targetDate = new Date("April 3, 2026 19:30:00").getTime();
+
+    setInterval(() => {
+      const now = new Date().getTime();
+      const gap = targetDate - now;
+
+      if (gap < 0) {
+        countdown.innerText = "IPL 2026 is Live Now!";
+        return;
+      }
+
+      const days = Math.floor(gap / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((gap % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((gap % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((gap % (1000 * 60)) / 1000);
+
+      countdown.innerText = `⏳ ${days}d ${hours}h ${minutes}m ${seconds}s left for IPL 2026`;
+    }, 1000);
+  </script>
 </body>
 </html>

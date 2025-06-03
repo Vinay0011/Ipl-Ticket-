@@ -1,50 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IPL Final Ticket Booking</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IPL Tickets</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #000;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .marquee {
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      box-sizing: border-box;
+      animation: marquee 10s linear infinite;
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #0ff;
+      text-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+
+    .ticket-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin: 30px 0;
+    }
+
+    .ticket-gallery img {
+      width: 280px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+      transition: transform 0.3s ease;
+    }
+
+    .ticket-gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    .neon-blink {
+      margin-top: 20px;
+      font-size: 1.1rem;
+      color: #ff00ff;
+      text-shadow: 0 0 5px #ff00ff, 0 0 15px #ff00ff;
+      animation: blink 1s infinite alternate;
+    }
+
+    @keyframes blink {
+      0% { opacity: 1; }
+      100% { opacity: 0.3; }
+    }
+
+    .book-btn {
+      margin-top: 30px;
+      padding: 15px 30px;
+      font-size: 1.1rem;
+      color: #fff;
+      background: #00f260;
+      background: linear-gradient(to right, #0575e6, #00f260);
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      text-shadow: 0 0 5px #000;
+      box-shadow: 0 0 10px rgba(0,255,100,0.6);
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .book-btn:hover {
+      transform: scale(1.05);
+    }
+  </style>
 </head>
 <body>
-  <div class="hero">
-    <img src="https://i.ibb.co/TxcDVbH4/20250602-085941.jpg" alt="IPL Final" class="hero-image" />
-    <div class="match-info">
-      <h1>RCB 🆚 PBKS</h1>
-      <p>📍 Narendra Modi Stadium, Ahmedabad</p>
-      <p>📅 Date: 3rd June | 🕢 Time: 7:30 PM</p>
-    </div>
+  <div class="marquee">Jisko Bhi Tickets Chaiye Half payment Karna Padega.</div>
+
+  <div class="ticket-gallery">
+    <img src="https://i.ibb.co/7tSr463b/20250603-105924.jpg" alt="Ticket 1">
+    <img src="https://i.ibb.co/DDmSwV1s/IMG-20250603-WA0000.jpg" alt="Ticket 2">
+    <img src="https://i.ibb.co/q3wp1W2D/IMG-20250602-WA0033.jpg" alt="Ticket 3">
+    <img src="https://i.ibb.co/VYH6PLbw/IMG-20250602-WA0018.jpg" alt="Ticket 4">
+    <img src="https://i.ibb.co/d0nxC8zc/IMG-20250602-WA0017.jpg" alt="Ticket 5">
+    <img src="https://i.ibb.co/gb4gMb5T/IMG-20250602-WA0008.jpg" alt="Ticket 6">
   </div>
 
-  <div class="ticket-section">
-    <h2>Select Your Seat Category 🎟️</h2>
+  <button class="book-btn" onclick="window.location.href='https://wa.me/919285539561?text=Hi%2C%20I%20want%20to%20book%20IPL%20tickets.%20Please%20provide%20details.'">Book Now on WhatsApp</button>
 
-    <div class="category">
-      <button onclick="showDetails('gen')">General Stand - ₹1,000 – ₹3,000</button>
-      <p id="gen" class="hidden">Basic seating with a thrilling ground-level experience. Budget-friendly for all fans.</p>
-    </div>
-
-    <div class="category">
-      <button onclick="showDetails('premium')">Lower Premium Stand - ₹4,000 – ₹7,000</button>
-      <p id="premium" class="hidden">Closer to the action! Great view and comfort. Perfect for die-hard fans.</p>
-    </div>
-
-    <div class="category">
-      <button onclick="showDetails('vip')">VIP / Club Pavilion - ₹10,000 – ₹20,000</button>
-      <p id="vip" class="hidden">Elite view with padded seats and lounge access. True luxury cricket experience.</p>
-    </div>
-
-    <div class="category">
-      <button onclick="showDetails('corporate')">Corporate Box - ₹25,000+</button>
-      <p id="corporate" class="hidden">Private box, catering, best seats. Book for your group or business.</p>
-    </div>
-
-    <div class="note">
-      <h4>📩 To Book, Send Your Preferred Category & Count on WhatsApp:</h4>
-      <a class="whatsapp-btn" href="https://wa.me/919285539561?text=Hi!%20I'm%20interested%20in%20IPL%20Final%20tickets.%20My%20preferred%20category%20is%3A" target="_blank">Book on WhatsApp</a>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
+  <div class="neon-blink">Ticket Naa Milne Par 100rs extra Refund milega</div>
 </body>
 </html>

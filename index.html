@@ -1,106 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IPL Tickets</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IPL Status</title>
   <style>
-    body {
+    * {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #000;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-
-    .marquee {
-      width: 100%;
-      overflow: hidden;
-      white-space: nowrap;
+      padding: 0;
       box-sizing: border-box;
-      animation: marquee 10s linear infinite;
-      font-size: 1.3rem;
-      font-weight: bold;
-      color: #0ff;
-      text-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
     }
 
-    @keyframes marquee {
-      0% { transform: translateX(100%); }
-      100% { transform: translateX(-100%); }
-    }
-
-    .ticket-gallery {
+    body {
+      height: 100vh;
+      background-color: black;
       display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
       justify-content: center;
-      margin: 30px 0;
+      align-items: center;
+      text-align: center;
+      font-family: 'Arial', sans-serif;
     }
 
-    .ticket-gallery img {
-      width: 280px;
-      height: auto;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
-      transition: transform 0.3s ease;
+    h1 {
+      font-size: 2rem;
+      background: linear-gradient(270deg, #ff0080, #ff8c00, #40e0d0, #ff0080);
+      background-size: 600% 600%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: glow 10s ease infinite, text-glow 2s ease-in-out infinite alternate;
     }
 
-    .ticket-gallery img:hover {
-      transform: scale(1.05);
+    @keyframes glow {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
     }
 
-    .neon-blink {
-      margin-top: 20px;
-      font-size: 1.1rem;
-      color: #ff00ff;
-      text-shadow: 0 0 5px #ff00ff, 0 0 15px #ff00ff;
-      animation: blink 1s infinite alternate;
+    @keyframes text-glow {
+      from {
+        text-shadow: 0 0 5px #fff, 0 0 10px #f0f, 0 0 15px #0ff;
+      }
+      to {
+        text-shadow: 0 0 20px #0ff, 0 0 30px #f0f, 0 0 40px #ff0;
+      }
     }
 
-    @keyframes blink {
-      0% { opacity: 1; }
-      100% { opacity: 0.3; }
-    }
-
-    .book-btn {
-      margin-top: 30px;
-      padding: 15px 30px;
-      font-size: 1.1rem;
-      color: #fff;
-      background: #00f260;
-      background: linear-gradient(to right, #0575e6, #00f260);
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      text-shadow: 0 0 5px #000;
-      box-shadow: 0 0 10px rgba(0,255,100,0.6);
-      transition: transform 0.3s ease, background 0.3s ease;
-    }
-
-    .book-btn:hover {
-      transform: scale(1.05);
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.5rem;
+        padding: 0 10px;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="marquee">Jisko Bhi Tickets Chaiye Half payment Karna Padega.</div>
-
-  <div class="ticket-gallery">
-    <img src="https://i.ibb.co/7tSr463b/20250603-105924.jpg" alt="Ticket 1">
-    <img src="https://i.ibb.co/DDmSwV1s/IMG-20250603-WA0000.jpg" alt="Ticket 2">
-    <img src="https://i.ibb.co/q3wp1W2D/IMG-20250602-WA0033.jpg" alt="Ticket 3">
-    <img src="https://i.ibb.co/VYH6PLbw/IMG-20250602-WA0018.jpg" alt="Ticket 4">
-    <img src="https://i.ibb.co/d0nxC8zc/IMG-20250602-WA0017.jpg" alt="Ticket 5">
-    <img src="https://i.ibb.co/gb4gMb5T/IMG-20250602-WA0008.jpg" alt="Ticket 6">
-  </div>
-
-  <button class="book-btn" onclick="window.location.href='https://wa.me/919285539561?text=Hi%2C%20I%20want%20to%20book%20IPL%20tickets.%20Please%20provide%20details.'">Book Now on WhatsApp</button>
-
-  <div class="neon-blink">Ticket Naa Milne Par 100rs extra Refund milega</div>
+  <h1>IPL 2025 is now over. This website will be live again for IPL 2026.</h1>
 </body>
 </html>
